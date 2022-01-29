@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 
 function Controls(props) {
@@ -9,13 +9,7 @@ function Controls(props) {
     const [color, setColor] = useState('#000000');
     const [checked, setChecked] = useState(false);
 
-    const onChangeHandler = (setFunction,event) => {
-        if (setFunction === setChecked) {
-            setFunction((prevVal) => !prevVal);
-        }
-        else {
-            setFunction(event.target.value);
-        }
+    useEffect(() => {
         props.valuesInputHandler({
             horizontal,
             vertical,
@@ -24,7 +18,18 @@ function Controls(props) {
             color,
             checked
         });
+    }, [checked,horizontal,vertical,blur,spread,color]);
+    
+    
+    const onChangeHandler = (setFunction,event) => {
+        if (setFunction === setChecked) {
+            setChecked((prevVal) => !prevVal);
+        }
+        else {
+            setFunction(event.target.value);
+        }
     };
+
 
     return (
         <>

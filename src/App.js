@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import './App.css';
 import Controls from './components/Controls';
 
@@ -24,6 +24,7 @@ function App() {
       </div>
       <div className='output'>
         <div className="box" style={{ boxShadow: `${values.checked ? 'inset' : ''} ${values.horizontal}px ${values.vertical}px ${values.blur}px ${values.spread}px ${values.color}` }}>
+        <p>box-shadow: {values.checked ? 'inset' : ''} {values.horizontal}px {values.vertical}px {values.blur}px {values.spread}px {values.color}</p>
         </div>
       </div>
     </div>
