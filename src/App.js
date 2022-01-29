@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import Controls from './components/Controls';
+
 
 function App() {
+  const [values, setValues] = useState({
+    horizontal:10,
+    vertical:10,
+    blur:10,
+    spread:10,
+    color:'#000000',
+    checked:false
+  });
+
+  const valuesInputHandler = (values) => {
+    setValues(values);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="controls">
+        <Controls valuesInputHandler={valuesInputHandler} />
+      </div>
+      <div className='output'>
+        <div className="box" style={{ boxShadow: `${values.checked ? 'inset' : ''} ${values.horizontal}px ${values.vertical}px ${values.blur}px ${values.spread}px ${values.color}` }}>
+        </div>
+      </div>
     </div>
   );
 }
